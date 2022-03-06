@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PostController extends Controller
 {
@@ -13,8 +14,19 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => '6LdHOrseAAAAAA365Al-iaaZojsEVQQLdacro8VD',
+            'response' => $request->recaptchaToken
+        ])->json();
 
-        dd('store post');
+        if (! $response['success']) {
+            return false;
+        }
+
+        if ($response['score'] < 0.7) {
+            return false;
+        }
+
+        dd($response);
     }
 }
