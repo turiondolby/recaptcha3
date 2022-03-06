@@ -17,7 +17,7 @@ class Recaptcha implements Rule
     public function passes($attribute, $value): bool
     {
         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => '6LdHOrseAAAAAA365Al-iaaZojsEVQQLdacro8VD',
+            'secret' => config('recaptcha.secret'),
             'response' => $value
         ])->json();
 

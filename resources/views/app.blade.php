@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="//unpkg.com/alpinejs" defer></script>
-     <script src="https://www.google.com/recaptcha/api.js?render=6LdHOrseAAAAALOb-FN_ceJ2ZABRJcX03883XEid"></script>
+     <script src="https://www.google.com/recaptcha/api.js?render={{ config('recaptcha.key') }}"></script>
 </head>
 <body>
     @yield('content')

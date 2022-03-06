@@ -5,7 +5,7 @@
     x-data="{
         execute() {
             grecaptcha.ready(() => {
-                grecaptcha.execute('6LdHOrseAAAAALOb-FN_ceJ2ZABRJcX03883XEid', { action: '{{ $action }}' })
+                grecaptcha.execute('{{ config('recaptcha.key') }}', { action: '{{ $action }}' })
                 .then((token) => {
                     this.$refs.recaptchaToken.value = token;
                     this.$el.closest('form').submit();
