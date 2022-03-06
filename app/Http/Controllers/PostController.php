@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class PostController extends Controller
 {
     public function create()
@@ -9,9 +11,9 @@ class PostController extends Controller
         return view('create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //validation
+        dd($request->all());
 
         dd('store post');
     }

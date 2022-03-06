@@ -19,4 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/posts/create', [PostController::class, 'create']);
-Route::get('/posts', [PostController::class, 'store']);
+Route::post('/posts', [PostController::class, 'store']);
